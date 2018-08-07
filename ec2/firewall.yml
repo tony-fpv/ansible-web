@@ -1,0 +1,6 @@
+- name: Create AWS instance
+  hosts: webserver
+  gather_facts: False
+  remote_user: centos
+  roles:
+    - firewall

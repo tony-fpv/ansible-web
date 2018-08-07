@@ -1,0 +1,24 @@
+---
+- name: install python 2
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+  become: yes
+
+- name: install UFW - Uncomplicated Firewall
+  apt: name=ufw state=latest update_cache=yes
+  become: yes
+
+- name: set logging
+  ufw: logging=on
+  become: yes
+
+- name: allow port 22
+  ufw: rule=allow port=22
+  become: yes
+
+- name: allow port 80
+  ufw: rule=allow port=80
+  become: yes
+
+- name: enable ufw
+  ufw: state=enabled policy=deny
+  become: yes

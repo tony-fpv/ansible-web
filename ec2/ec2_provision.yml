@@ -1,0 +1,7 @@
+- name: Create AWS instance
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  remote_user: centos
+  roles:
+    - int
